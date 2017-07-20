@@ -13,7 +13,12 @@ $(document).ready(function() {
 
     /* ===== MAP SETUP ===== */
 
-        var map = L.map('map').setView([48.6616, 9.3501], 8)
+        var map = L.map('map', {
+            center: [48.6616, 9.3501],
+            zoom: 8,
+            minZoom: 8,
+            maxBounds: L.latLngBounds(L.latLng(47.092472, 6.526250), L.latLng(50.541055, 11.700045))
+        });
 
     /* ===== ICONS SETUP ===== */
 
@@ -44,14 +49,25 @@ $(document).ready(function() {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
+        var hikeBikeHillshadeBasemap = L.tileLayer('http://{s}.tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png', {
+            maxZoom: 15,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
         var castleLayerLargeScale = L.geoJSON(bwCastles, {
             pointToLayer: function(feature, latlng) {
                 return L.marker(latlng, {icon: castleIconLargeScale})
             },
             onEachFeature: function(feature, layer) {
-                layer.bindPopup(feature.properties.name);
+                //layer.bindPopup(feature.properties.name);
                 layer.on("click", function(e) {
                     addContentToSidebar(feature, layer);
+                });
+                layer.bindTooltip(feature.properties.name, {
+                    permanent: true,
+                    direction: 'bottom',
+                    className: 'tooltip',
+                    opacity: 0.8
                 });
             }
         });
@@ -61,9 +77,15 @@ $(document).ready(function() {
                 return L.marker(latlng, {icon: ruinsIconLargeScale})
             },
             onEachFeature: function(feature, layer) {
-                layer.bindPopup(feature.properties.name);
+                //layer.bindPopup(feature.properties.name);
                 layer.on("click", function(e) {
                     addContentToSidebar(feature, layer);
+                });
+                layer.bindTooltip(feature.properties.name, {
+                    permanent: true,
+                    direction: 'bottom',
+                    className: 'tooltip',
+                    opacity: 0.8
                 });
             }
         });
@@ -96,13 +118,13 @@ $(document).ready(function() {
 
         map.on('zoomend', function () {
             console.log(map.getZoom());
-            if (map.getZoom() >= 10) {
+            if (map.getZoom() >= 13) {
                 map.removeLayer(castleLayerSmallScale);
                 map.addLayer(castleLayerLargeScale);
                 map.removeLayer(ruinsLayerSmallScale);
                 map.addLayer(ruinsLayerLargeScale);
             }
-            if (map.getZoom() < 10)
+            if (map.getZoom() < 13)
             {
                 map.removeLayer(castleLayerLargeScale);
                 map.addLayer(castleLayerSmallScale);
@@ -112,8 +134,6 @@ $(document).ready(function() {
         });
 
     /* ===== SIDEBAR CONTENT CONTROL ===== */
-
-    var SIDEBAR_POINTER = 0;
 
     function addContentToSidebar(content, layer) {
 
@@ -130,9 +150,7 @@ $(document).ready(function() {
         }
 
         // Set up html for bookmark list entry
-        htmlContent = '<li class="sidebar-list-item"><img src="'+ icon + '" class="sidebar-img"><span class="solo" id="sidebar-entry-'
-                        + SIDEBAR_POINTER
-                        + '" lat="'
+        htmlContent = '<li class="sidebar-list-item"><h6 class="remove-button">🗙</h6><img src="'+ icon + '" class="sidebar-img"><span class="solo" lat="'
                         + lat
                         + '" lng="'
                         + lng
@@ -140,9 +158,7 @@ $(document).ready(function() {
                         + name
                         + '</span></li>';
 
-        $("#sidebar-target").append(htmlContent);
-
-        ++SIDEBAR_POINTER;
+        $(htmlContent).insertBefore( $("#credits-begin") );
 
     }
 
@@ -153,5 +169,11 @@ $(document).ready(function() {
         console.log(lat + ", " + lng);
         map.setView(new L.LatLng(lat, lng), 14);
     })
+
+    // Remove item from bookmarks
+    $("#sidebar-target").on("click", "h6", function () {
+        var parentElement = $(this).parent();
+        parentElement.remove();
+    });
 
 });

@@ -33,19 +33,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div  class="navbar-brand">
+                <div class="navbar-brand" id="title">
                     <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle">
                         <i class="fa fa-bars"></i>
                     </a>
-                    <a href="#">Project name</a>
+                    Castles and Ruins in Baden-Württemberg
                 </div>
             </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
         </div>
     </nav>
     <!-- Sidebar -->
@@ -53,20 +47,46 @@
         <nav id="spy">
             <ul class="sidebar-nav nav" id="sidebar-target">
                 <li class="sidebar-brand">
-                    <a href="#home"><span class="fa fa-home solo">Bookmarks</span></a>
+                    <span class="fa fa-home solo" id="about-title">About</span>
                 </li>
-                <!--<li class="sidebar-list-item">
-                        <span class="solo" id="sidebar-entry-0" lat="" lng=""></span>
+                <li>
+                    <p class="about-text">
+                        Baden-Württemnerg is home to hundreds of beautiful historic castles and ruins.  This map shows all castles and ruins in Baden Württemberg that are on OpenStreetMap as of 19.07.17 and have a name.
+                        <br>
+                        <br>
+                        Click on the castle/ruins icons on the map to add them to the bookmarks list in the sidebar.  Clicking on the bookmark entry will zoom to that castle/ruins.
+                    </p>
                 </li>
-                <li class="sidebar-list-item">
-                        <span class="solo" id="sidebar-entry-1" lat="" lng=""></span>
+                <li class="sidebar-brand">
+                    <span class="fa fa-home solo" id="toc-title">Table of Contents</span>
                 </li>
-                <li class="sidebar-list-item">
-                        <span class="solo" id="sidebar-entry-2" lat="" lng=""></span>
+                <li class="sidebar-brand">
+                    <img src="icon/castle.png" height="32" width="32" class="sidebar-img"/><span class="fa fa-home solo" id="toc-castle">Castle</span>
                 </li>
-                <li class="sidebar-list-item">
-                        <span class="solo" id="sidebar-entry-3" lat="" lng=""></span>
-                </li>-->
+                <li class="sidebar-brand">
+                    <img src="icon/castle-ruins.png" height="32" width="32" class="sidebar-img"/><span class="fa fa-home solo" id="toc-ruins">Ruins</span>
+                </li>
+                <li class="sidebar-brand">
+                    <span class="fa fa-home solo" id="bookmarks-title">Bookmarks</span>
+                </li>
+                <li class="sidebar-brand" id="credits-begin">
+                    <span class="fa fa-home solo" id="credits-title">Credits</span>
+                </li>
+                <li>
+                    <p class="about-text">
+                        Author: <a href="https://www.linkedin.com/in/isaac-boates-338547100/">Isaac Boates</a>, July 2017
+                        <br>
+                        HikeBike basemap: <a href="https://leaflet-extras.github.io/leaflet-providers/preview/">wmflabs.org</a>
+                        <br>
+                        Web map: <a href="http://leafletjs.com/">Leaflet.js</a>
+                        <br>
+                        Menu/sidebar: <a href="https://bootsnipp.com/snippets/4OZ8R">bootsnipp.com</a> (adapted)
+                        <br>
+                        Castle/ruins data: <a href="http://download.geofabrik.de">GeoFabrik</a>
+                        <br>
+                        Castle/ruins icons: <a href="http://game-icons.net/">game-icons.net</a>
+                    </p>
+                </li>
             </ul>
         </nav>
     </div>

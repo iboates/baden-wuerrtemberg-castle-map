@@ -40,15 +40,7 @@
 }
 
 .sidebar-nav li {
-    line-height: 40px;
-    text-indent: 20px;
-}
-
-.sidebar-nav li a {
-    color: #999999;
-    display: block;
-    text-decoration: none;
-    padding-left: 60px;
+    line-height: 25px;
 }
 
 .sidebar-nav li a span:before {
@@ -58,13 +50,6 @@
     text-align: center;
     width: 20px;
     line-height: 18px;
-}
-
-.sidebar-nav li a:hover,
-.sidebar-nav li.active {
-    color: #fff;
-    background: rgba(255,255,255,0.2);
-    text-decoration: none;
 }
 
 .sidebar-nav li a:active,
@@ -121,23 +106,82 @@
 
 }
 
+#title {
+    color: white;
+}
+
 #map {
     height: 94.5vh;
+}
+
+#sidebar-target {
+    overflow-y: auto;
 }
 
 .sidebar-list-item {
     width: 100%;
 }
 
+.remove-button {
+    clear: both;
+    float: left;
+    max-height: 10px;
+    color: lightcoral;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.remove-button:hover {
+    color: red;
+    margin-left: 10px;
+}
+
 .sidebar-img {
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .solo {
     color: white;
+    margin-left: 10px;
 }
 
 .solo:hover {
     color: yellow;
     cursor: pointer;
+    margin-left: 10px;
+}
+
+#bookmarks-title:hover {
+    color: white;
+    cursor: text;
+}
+
+#toc-title:hover {
+    color: white;
+    cursor: text;
+}
+
+#toc-castle:hover {
+    color: white;
+    cursor: text;
+}
+
+#toc-ruins:hover {
+    color: white;
+    cursor: text;
+}
+
+.about-text {
+    color: white;
+    line-height: 1.3em;
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 9pt;
+}
+
+.tooltip {
+    font-weight: bold;
+    margin-top: 20px;
 }
